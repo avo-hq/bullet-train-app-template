@@ -1,4 +1,4 @@
-class MembershipResource < Avo::BaseResource
+class Avo::Resources::Membership < Avo::BaseResource
   self.title = :name
   self.includes = []
   self.search = {

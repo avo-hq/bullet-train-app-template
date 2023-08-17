@@ -1,4 +1,4 @@
-class UserResource < Avo::BaseResource
+class Avo::Resources::User < Avo::BaseResource
   self.title = :full_name
   self.includes = []
   self.search = {

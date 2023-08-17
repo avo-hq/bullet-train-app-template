@@ -1,4 +1,4 @@
-class InvitationResource < Avo::BaseResource
+class Avo::Resources::Invitation < Avo::BaseResource
   self.title = :email
   self.includes = []
   self.search = {
