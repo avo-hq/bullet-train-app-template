@@ -39,6 +39,8 @@ when "advanced"
   gem "avo-advanced", source: "https://packager.dev/avo-hq"
 end
 
+gem "ransack"
+
 # === Run bundle install ===
 Bundler.with_unbundled_env { run "bundle install" }
 
