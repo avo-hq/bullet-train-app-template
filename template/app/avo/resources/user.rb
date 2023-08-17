@@ -1,11 +1,11 @@
 class UserResource < Avo::BaseResource
   self.title = :full_name
-  self.includes = [:teams, :memberships]
+  self.includes = []
   self.search = {
     query: -> { query.ransack(id_eq: params[:q], first_name_cont: params[:q], last_name_cont: params[:q], email_cont: params[:q], m: "or").result(distinct: false) },
     item: -> {
       {
-        title: record.name,
+        title: record.full_name,
       }
     }
   }
