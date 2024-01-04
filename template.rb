@@ -11,13 +11,21 @@ end
 unless edition
   # === Fetch the Avo edition ===
   question = <<~QUESTION
-    What version of Avo would you like to install?
+
+
+    Which version of Avo would you like to install?
     1. Avo Community (default)
     2. Avo Pro
     3. Avo Advanced
-  QUESTION
 
-  answer = ask(question, default: "1", limited_to: ["1", "2", "3"])
+    More information about version features here:
+    https://avohq.io/pricing
+
+
+  QUESTION
+  puts question
+
+  answer = ask("Which version of Avo would you like to install?", default: "1", limited_to: ["1", "2", "3"])
 
   edition = case answer
   when "1"
@@ -44,16 +52,14 @@ gem "ransack"
 # === Run bundle install ===
 Bundler.with_unbundled_env { run "bundle install" }
 
-# === Add route ===
-route_contents = <<-ROUTES
-  # Avo admin panel
-  if defined?(Avo::Engine)
-    authenticated :user, lambda { |u| u.admin? } do
-      mount Avo::Engine, at: Avo.configuration.root_path
-    end
+file "config/routes/avo.rb", "# Avo admin panel
+if defined?(Avo::Engine)
+  authenticate :user, lambda { |u| u.developer? } do
+    mount Avo::Engine, at: Avo.configuration.root_path
   end
-ROUTES
-route route_contents
+end"
+
+route "draw \"avo\""
 
 # === Copy template files ===
 files.each do |path, contents|
