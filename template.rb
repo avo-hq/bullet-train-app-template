@@ -40,7 +40,7 @@ end
 # === Add gem to Gemfile ===
 case edition
 when "community"
-  gem "avo", ">= 3.0.1.beta4", source: "https://packager.dev/avo-hq"
+  gem "avo", ">= 3.2.3"
 when "pro"
   gem "avo-pro", source: "https://packager.dev/avo-hq"
 when "advanced"

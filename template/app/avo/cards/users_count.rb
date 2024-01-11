@@ -1,4 +1,4 @@
-class Avo::Cards::UsersCount < Avo::Dashboards::MetricCard
+class Avo::Cards::UsersCount < Avo::Cards::MetricCard
   self.id = "users_count"
   self.label = "Users count"
   self.description = "Count of registered users"
